@@ -38,6 +38,11 @@
 #include "core.h"
 #include "common.h"
 
+#if defined(__FreeBSD__) || defined(__APPLE__)
+#define     s6_addr32       __u6_addr.__u6_addr32
+#define     s6_addr16       __u6_addr.__u6_addr16
+#endif /* __FreeBSD__ or __APPLE__ */
+
 #define     satosin(x)      ((struct sockaddr_in *) &(x))
 #define     SOCKADDR(x)     (satosin(x)->sin_addr.s_addr)
 #define     SOCKADDR_2(x)     (satosin(x)->sin_addr)
